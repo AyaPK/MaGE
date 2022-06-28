@@ -12,14 +12,20 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="uk.co.ayaspace.mage.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_diary"
+        android:name="uk.co.ayaspace.mage.ui.diary.DiaryFragment"
+        android:label="@string/title_diary"
+        tools:layout="@layout/fragment_diary" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="uk.co.ayaspace.mage.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_alarms"
+        android:name="uk.co.ayaspace.mage.ui.alarms.AlarmsFragment"
+        android:label="@string/title_alarms"
+        tools:layout="@layout/fragment_alarms" />
+
+    <fragment
+        android:id="@+id/navigation_settings"
+        android:name="uk.co.ayaspace.mage.ui.settings.SettingsFragment"
+        android:label="@string/title_settings"
+        tools:layout="@layout/fragment_settings" />
 </navigation>

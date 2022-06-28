@@ -1,13 +1,13 @@
-package uk.co.ayaspace.mage.ui.notifications
+package uk.co.ayaspace.mage.ui.diary
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class NotificationsViewModel : ViewModel() {
+class DiaryViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is notifications Fragment"
+        value = "This is diary Fragment"
     }
     val text: LiveData<String> = _text
 }
