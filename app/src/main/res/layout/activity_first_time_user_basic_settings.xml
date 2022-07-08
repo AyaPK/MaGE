@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".firstTimeUserActivities.FirstTimeUserBasicSettings">
+
+    <include
+        android:id="@+id/themainbar"
+        layout="@layout/actionbar_nobuttons"
+        />
+
+    <TextView
+        android:id="@+id/first_some_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:fontFamily="@font/calistoga"
+        android:text="@string/now_for_some_basic_settings"
+        android:textAlignment="center"
+        android:textColor="@color/raisin_black"
+        android:textSize="30sp"
+        app:layout_constraintTop_toBottomOf="@+id/themainbar"
+        tools:layout_editor_absoluteX="97dp" />
+
+    <TextView
+        android:id="@+id/time_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/calistoga"
+        android:text="@string/time_format"
+        android:textAlignment="center"
+        android:textColor="@color/raisin_black"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/first_some_details" />
+
+    <Spinner
+        android:id="@+id/time_format_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="7dp"
+        app:layout_constraintStart_toEndOf="@id/time_label"
+        app:layout_constraintTop_toTopOf="@+id/time_label" />
+
+    <TextView
+        android:id="@+id/date_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/calistoga"
+        android:text="@string/date_format"
+        android:textAlignment="center"
+        android:textColor="@color/raisin_black"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/time_label" />
+
+    <Spinner
+        android:id="@+id/date_format_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="7dp"
+        app:layout_constraintStart_toEndOf="@id/date_label"
+        app:layout_constraintTop_toTopOf="@+id/date_label" />
+
+    <TextView
+        android:id="@+id/pronouns_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/calistoga"
+        android:text="@string/cloud_backups_optional"
+        android:textAlignment="center"
+        android:textColor="@color/raisin_black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/date_label" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/data_backup_toggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="170dp"
+        android:layout_marginTop="2dp"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pronouns_label" />
+
+    <Button
+        android:id="@+id/nextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/next"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/data_backup_toggle" />
+
+    <TextView
+        android:id="@+id/what_is_backed_up"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:text="@string/what_is_backed_up"
+        android:textAlignment="center"
+        android:textColor="@color/Ultramarine"
+        app:layout_constraintTop_toBottomOf="@+id/nextButton"
+        tools:layout_editor_absoluteX="177dp" />
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

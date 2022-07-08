@@ -1,4 +1,4 @@
-package uk.co.ayaspace.mage.ui.settings
+package uk.co.ayaspace.mage.mainTabbedActivities.settings
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,6 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import uk.co.ayaspace.mage.R
 import uk.co.ayaspace.mage.databinding.FragmentSettingsBinding
 
 class SettingsFragment : Fragment() {

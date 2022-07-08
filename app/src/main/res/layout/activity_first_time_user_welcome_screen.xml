@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".firstTimeUserActivities.FirstTimeUserWelcomeScreen">
+
+    <include
+        android:id="@+id/themainbar"
+        layout="@layout/actionbar_nobuttons"
+        />
+
+    <TextView
+        android:id="@+id/welcome_to_mage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="128dp"
+        android:fontFamily="@font/calistoga"
+        android:text="@string/welcome_to_mage"
+        android:textAlignment="center"
+        android:textColor="@color/raisin_black"
+        android:textSize="34sp"
+        app:layout_constraintTop_toBottomOf="@+id/themainbar"
+        tools:layout_editor_absoluteX="97dp" />
+
+    <TextView
+        android:id="@+id/journey_together"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/calistoga"
+        android:text="@string/let_s_go_through_this_journey_together"
+        android:textAlignment="center"
+        android:textColor="@color/raisin_black"
+        android:textSize="34sp"
+        app:layout_constraintTop_toBottomOf="@+id/welcome_to_mage"
+        tools:layout_editor_absoluteX="97dp" />
+
+    <Button
+        android:id="@+id/getStartedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="140dp"
+        android:text="@string/get_started"
+        app:iconTint="@color/Ultramarine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/journey_together" />
+
+    <TextView
+        android:id="@+id/what_is_mage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:text="@string/what_is_mage"
+        android:textAlignment="center"
+        android:textColor="@color/Ultramarine"
+        app:layout_constraintTop_toBottomOf="@+id/getStartedButton"
+        tools:layout_editor_absoluteX="177dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

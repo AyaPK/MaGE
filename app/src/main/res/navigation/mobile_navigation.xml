@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="uk.co.ayaspace.mage.ui.home.HomeFragment"
+        android:name="uk.co.ayaspace.mage.mainTabbedActivities.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_diary"
-        android:name="uk.co.ayaspace.mage.ui.diary.DiaryFragment"
+        android:name="uk.co.ayaspace.mage.mainTabbedActivities.diary.DiaryFragment"
         android:label="@string/title_diary"
         tools:layout="@layout/fragment_diary" />
 
     <fragment
         android:id="@+id/navigation_alarms"
-        android:name="uk.co.ayaspace.mage.ui.alarms.AlarmsFragment"
+        android:name="uk.co.ayaspace.mage.mainTabbedActivities.alarms.AlarmsFragment"
         android:label="@string/title_alarms"
         tools:layout="@layout/fragment_alarms" />
 
     <fragment
         android:id="@+id/navigation_settings"
-        android:name="uk.co.ayaspace.mage.ui.settings.SettingsFragment"
+        android:name="uk.co.ayaspace.mage.mainTabbedActivities.settings.SettingsFragment"
         android:label="@string/title_settings"
         tools:layout="@layout/fragment_settings" />
 </navigation>
