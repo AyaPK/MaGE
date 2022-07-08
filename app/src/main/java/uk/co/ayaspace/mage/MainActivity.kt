@@ -8,6 +8,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import uk.co.ayaspace.mage.activities.SecurityCheckOnLaunch
 import uk.co.ayaspace.mage.databinding.ActivityMainBinding
 import uk.co.ayaspace.mage.firstTimeUserActivities.FirstTimeUserWelcomeScreen
 import uk.co.ayaspace.mage.utils.CustomPreferenceManager
@@ -24,7 +25,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //Temporarily force redirect to First Time User Activities
         if (!preferenceHelper.getUserExists()) {
             val intent = Intent(this, FirstTimeUserWelcomeScreen::class.java)
             startActivity(intent);
@@ -34,8 +34,6 @@ class MainActivity : AppCompatActivity() {
         val navView: BottomNavigationView = binding.navView
 
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_home, R.id.navigation_diary, R.id.navigation_alarms, R.id.navigation_settings
@@ -43,4 +41,5 @@ class MainActivity : AppCompatActivity() {
         )
         navView.setupWithNavController(navController)
     }
+
 }
