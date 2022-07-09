@@ -14,4 +14,10 @@
         <!-- Customize your theme here. -->
         <item name="fontFamily">@font/calistoga</item>
     </style>
+    <style name="Theme.MaGE.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Theme.MaGE.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Theme.MaGE.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

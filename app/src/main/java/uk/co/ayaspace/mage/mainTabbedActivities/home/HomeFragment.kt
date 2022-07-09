@@ -25,7 +25,7 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val appContext: Context = Objects.requireNonNull(this.activity)!!.applicationContext
+        val appContext: Context = this.requireActivity().applicationContext
         val preferenceHelper: CustomPreferenceManager by lazy { PreferenceHelper(appContext) }
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)

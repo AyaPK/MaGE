@@ -51,19 +51,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/everything_is_optional" />
 
-    <TextView
-        android:id="@+id/birthday_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/calistoga"
-        android:text="@string/birthday"
-        android:textAlignment="center"
-        android:textColor="@color/raisin_black"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/name_label" />
 
     <TextView
         android:id="@+id/pronouns_label"
@@ -78,6 +65,21 @@
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/birthday_label" />
+
+    <TextView
+        android:id="@+id/birthday_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/calistoga"
+        android:text="@string/birthday"
+        android:textAlignment="center"
+        android:textColor="@color/raisin_black"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name_label" />
+
 
     <ImageButton
         android:id="@+id/birthday_button"

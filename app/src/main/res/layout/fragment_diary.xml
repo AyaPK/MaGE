@@ -9,7 +9,8 @@
     <include
         android:id="@+id/themainbar"
         layout="@layout/actionbar_nobuttons"
-        />
+        tools:layout_editor_absoluteX="160dp"
+        tools:layout_editor_absoluteY="185dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/mainEntryList"
@@ -19,5 +20,19 @@
         android:layout_marginBottom="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteY="80dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floating_button_add_diary_entry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="-380dp"
+        android:layout_marginBottom="82dp"
+        android:background="@color/Orange_Yellow_Crayola"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_baseline_edit_24"
+        app:backgroundTint="@color/Orange_Yellow_Crayola"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/mainEntryList"
+        app:tint="@color/raisin_black" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

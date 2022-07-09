@@ -16,12 +16,17 @@ import java.util.*
 import android.R.id
 
 
-class CustomDatePicker : DialogFragment() {
+class CustomDatePicker() : DialogFragment() {
+
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val year = 2000
-        val month = 0
-        val dayOfMonth = 1
-        val dp = DatePickerDialog(activity!!, activity as OnDateSetListener?, year, month, dayOfMonth)
+        val mCalendar: Calendar = Calendar.getInstance()
+        val simpleDateFormat = SimpleDateFormat("dd-MM-yyyy")
+        val dateTime = simpleDateFormat.format(mCalendar.time).toString()
+        val dayOfMonth = dateTime.split("-")[0].toInt()
+        val month = dateTime.split("-")[1].toInt()
+        val year = dateTime.split("-")[2].toInt()
+
+        val dp = DatePickerDialog(requireActivity(), activity as OnDateSetListener?, year, month, dayOfMonth)
         return dp
     }
 }

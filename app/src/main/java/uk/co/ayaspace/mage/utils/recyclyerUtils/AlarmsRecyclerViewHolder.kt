@@ -10,8 +10,8 @@ import uk.co.ayaspace.mage.model.Entry
 
 class AlarmsRecyclerViewHolder(private val onItemClicked: (position: Int) -> Unit, view: View) : RecyclerView.ViewHolder(view), View.OnClickListener{
     var bookNameTextView: TextView = view.findViewById(R.id.bookNameRecycler)
-    var bookRatingBar: RatingBar = view.findViewById(R.id.bookRatingBar)
-    var bookDate: TextView = view.findViewById(R.id.dateView)
+//    var bookRatingBar: RatingBar = view.findViewById(R.id.bookRatingBar)
+//    var bookDate: TextView = view.findViewById(R.id.dateView)
     lateinit var entry: Entry
     init {
         itemView.setOnClickListener(this)

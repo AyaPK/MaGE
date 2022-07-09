@@ -27,8 +27,8 @@ class AlarmsFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        val appContext: Context = Objects.requireNonNull(this.activity)!!.applicationContext
+    ): View {
+        val appContext: Context = this.requireActivity().applicationContext
         val preferenceHelper: CustomPreferenceManager by lazy { PreferenceHelper(appContext) }
 
         _binding = FragmentAlarmsBinding.inflate(inflater, container, false)
