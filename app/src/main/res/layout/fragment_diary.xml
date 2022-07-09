@@ -27,12 +27,11 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="-380dp"
         android:layout_marginBottom="82dp"
-        android:background="@color/Orange_Yellow_Crayola"
-        android:contentDescription="@string/app_name"
         android:src="@drawable/ic_baseline_edit_24"
         app:backgroundTint="@color/Orange_Yellow_Crayola"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/mainEntryList"
-        app:tint="@color/raisin_black" />
+        app:tint="@color/raisin_black"
+        android:contentDescription="@string/floating_button_to_create_new_entry" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

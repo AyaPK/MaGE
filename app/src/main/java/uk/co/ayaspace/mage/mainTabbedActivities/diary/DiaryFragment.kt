@@ -1,5 +1,6 @@
 package uk.co.ayaspace.mage.mainTabbedActivities.diary
 
+import android.app.Activity
 import uk.co.ayaspace.mage.utils.recyclyerUtils.DiaryRecyclerAdapter
 import android.content.Context
 import android.content.Intent
@@ -7,7 +8,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -26,6 +32,7 @@ class DiaryFragment : Fragment() {
     lateinit var dataAccess: DataAccess
     lateinit var floatingButton: FloatingActionButton
     lateinit var entryList: ArrayList<Entry>
+    lateinit var diaryAdapter: DiaryRecyclerAdapter
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -48,15 +55,22 @@ class DiaryFragment : Fragment() {
         entryListView = binding.mainEntryList
         val layoutManager = LinearLayoutManager(appContext)
         entryListView.layoutManager = layoutManager
-        entryListView.adapter = DiaryRecyclerAdapter({ position -> onItemClicked(position) }, entryList)
+        diaryAdapter = DiaryRecyclerAdapter({ position -> onItemClicked(position) }, entryList)
+        entryListView.adapter = diaryAdapter
 
         floatingButton = binding.floatingButtonAddDiaryEntry
         floatingButton.setOnClickListener {
             val intent = Intent(appContext, NewDiaryEntry::class.java)
-            startActivity(intent)
+            getResultFromEntryClicked.launch(intent)
         }
 
         return root
+    }
+
+    override fun onStart() {
+        super.onStart()
+        entryList = dataAccess.getAllDiaryEntries()
+        diaryAdapter.notifyDataSetChanged()
     }
 
     override fun onDestroyView() {
@@ -70,6 +84,17 @@ class DiaryFragment : Fragment() {
         intent.putExtra("title", entry.title)
         intent.putExtra("content", entry.content)
         intent.putExtra("date", entry.dateText)
-        startActivity(intent)
+        intent.putExtra("entryID", entry.entryID)
+        getResultFromEntryClicked.launch(intent)
     }
+
+    private var getResultFromEntryClicked = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            entryList = dataAccess.getAllDiaryEntries()
+            diaryAdapter = DiaryRecyclerAdapter({ position -> onItemClicked(position) }, entryList)
+            diaryAdapter.notifyDataSetChanged()
+            entryListView.adapter = diaryAdapter
+        }
+    }
+
 }

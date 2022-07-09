@@ -23,7 +23,7 @@ class CustomDatePicker() : DialogFragment() {
         val simpleDateFormat = SimpleDateFormat("dd-MM-yyyy")
         val dateTime = simpleDateFormat.format(mCalendar.time).toString()
         val dayOfMonth = dateTime.split("-")[0].toInt()
-        val month = dateTime.split("-")[1].toInt()
+        val month = dateTime.split("-")[1].toInt()-1
         val year = dateTime.split("-")[2].toInt()
 
         val dp = DatePickerDialog(requireActivity(), activity as OnDateSetListener?, year, month, dayOfMonth)

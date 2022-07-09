@@ -12,58 +12,56 @@ import java.lang.Exception
 
 class DataAccess(private val context: Context) {
     var helper: MyDbHelper = MyDbHelper(context)
-
-//    public fun insertData(bookname: String, childcomments: String, adultcomments: String, rating: Int, pagesread: Int, datetext: String): Long {
-//        val dbb: SQLiteDatabase = helper.writableDatabase
-//        val contentValues: ContentValues = ContentValues()
-//        contentValues.put(helper.BOOKNAME, bookname)
-//        contentValues.put(helper.CHILDCOMMENTS, childcomments)
-//        contentValues.put(helper.ADULTCOMMENTS, adultcomments)
-//        contentValues.put(helper.RATING, rating)
-//        contentValues.put(helper.PAGESREAD, pagesread)
-//        contentValues.put(helper.DATETEXT, datetext)
-//        return dbb.insert(helper.TABLE_NAME, null, contentValues)
-//    }
+    var gson: Gson = Gson()
 
     public fun insertDiaryEntry(entry: Entry): Long {
         val dbb: SQLiteDatabase = helper.writableDatabase
         val contentValues: ContentValues = ContentValues()
-        val entryObject = Gson().toJson(entry)
+        val entryObject = gson.toJson(entry)
         contentValues.put(helper.objectString, entryObject)
         return dbb.insert("Entries", null, contentValues)
     }
 
     public fun getAllDiaryEntries() : ArrayList<Entry> {
         val dbb = helper.writableDatabase
-        val columns = arrayOf(helper.uid, helper.objectString)
+        val columns = arrayOf(helper.id, helper.objectString)
         val cursor: Cursor = dbb.query("Entries",columns,null,null,null,null,null)
         val buffer: ArrayList<Entry> = ArrayList<Entry>()
         while (cursor.moveToNext()) {
-            val entry : Entry = Gson().fromJson(cursor.getString(cursor.getColumnIndexOrThrow(helper.objectString)), Entry::class.java)
+            val entry : Entry = gson.fromJson(cursor.getString(cursor.getColumnIndexOrThrow(helper.objectString)), Entry::class.java)
+            entry.entryID = cursor.getString(cursor.getColumnIndexOrThrow(helper.id)).toInt()
             buffer.add(entry)
         }
         return buffer
     }
 
-//
-//    public fun getAllBooks() : ArrayList<String> {
-//        val dbb = helper.writableDatabase
-//        val columns = arrayOf(helper.UID, helper.BOOKNAME, helper.CHILDCOMMENTS, helper.ADULTCOMMENTS, helper.RATING, helper.PAGESREAD, helper.DATETEXT)
-//        val cursor: Cursor = dbb.query(helper.TABLE_NAME,columns,null,null,null,null,null)
-//        val buffer: ArrayList<String> = ArrayList<String>()
-//        while (cursor.moveToNext()) {
-//            val cid: Int = cursor.getInt(cursor.getColumnIndexOrThrow(helper.UID))
-//            val bookname: String = cursor.getString(cursor.getColumnIndexOrThrow(helper.BOOKNAME))
-//            val childcomments: String = cursor.getString(cursor.getColumnIndexOrThrow(helper.CHILDCOMMENTS))
-//            val adultcomments: String = cursor.getString(cursor.getColumnIndexOrThrow(helper.ADULTCOMMENTS))
-//            val rating: String = cursor.getString(cursor.getColumnIndexOrThrow(helper.RATING))
-//            val pagesread: String = cursor.getString(cursor.getColumnIndexOrThrow(helper.PAGESREAD))
-//            val datetext: String = cursor.getString(cursor.getColumnIndexOrThrow(helper.DATETEXT))
-//            buffer.add("$cid|$bookname|$childcomments|$adultcomments|$rating|$pagesread|$datetext\n")
-//        }
-//        return buffer
-//    }
-//
+    public fun deleteEntry(id: Int) {
+        val dbb = helper.writableDatabase
+        dbb.delete("Entries", "id=$id", null)
+    }
+
+    public fun getEntryByID(id: Int): Entry {
+        val dbb = helper.writableDatabase
+        val columns = arrayOf(helper.id, helper.objectString)
+        val cursor: Cursor = dbb.query("Entries",columns,"id=$id",null,null,null,null)
+        val buffer: ArrayList<Entry> = ArrayList<Entry>()
+        while (cursor.moveToNext()) {
+            val entry : Entry = gson.fromJson(cursor.getString(cursor.getColumnIndexOrThrow(helper.objectString)), Entry::class.java)
+            entry.entryID = cursor.getString(cursor.getColumnIndexOrThrow(helper.id)).toInt()
+            buffer.add(entry)
+        }
+        return buffer[0]
+    }
+
+    public fun updateEntry(entry: Entry) {
+        val dbb = helper.writableDatabase
+        val updatedEntry = ContentValues()
+        val id = entry.entryID.toInt()
+        updatedEntry.put(helper.id, id)
+        updatedEntry.put(helper.objectString, gson.toJson(entry))
+        dbb.update("Entries", updatedEntry,"id=$id", null)
+    }
+
 //    public fun updateEntry(id: Int, name: String, childcomments: String, adultcomment: String, rating: Int, pagesread: Int, datetext: String) {
 //        val dbb = helper.writableDatabase
 //        val updatedEntry = ContentValues()
@@ -77,18 +75,13 @@ class DataAccess(private val context: Context) {
 //        dbb.update("choices", updatedEntry, "_id=$id", null)
 //         }
 
-    public fun deleteEntry(id: Int) {
-        val dbb = helper.writableDatabase
-        dbb.delete("choices", "_id=$id", null)
-
-    }
 
     class MyDbHelper(
         var context: Context,
         private val DATABASE_VERSION: Int = 1,
         private val DATABASE_NAME: String = "myDatabase",
         val TABLE_NAME: String = "choices",
-        val uid: String = "id",
+        val id: String = "id",
         val objectString: String = "objectString",
         val cloudStorage: String = "CloudStorage",
         val timeFormat: String = "TimeFormat",

@@ -195,5 +195,7 @@
     <string name="entry_title">Entry Title</string>
     <string name="my_diary_entry">My diary entry</string>
     <string name="entry_text">Entry text</string>
+    <string name="floating_button_to_create_new_entry">Floating Button To Create New Entry</string>
+    <string name="editing_entry"><u>Editing entry</u></string>
 
 </resources>

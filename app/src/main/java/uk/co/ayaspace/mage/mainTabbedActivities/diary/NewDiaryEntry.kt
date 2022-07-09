@@ -36,6 +36,10 @@ class NewDiaryEntry : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
             val mDatePickerDialogFragment: CustomDatePicker = CustomDatePicker()
             mDatePickerDialogFragment.show(supportFragmentManager, "DATE PICK")
         }
+        dateText.setOnClickListener {
+            val mDatePickerDialogFragment: CustomDatePicker = CustomDatePicker()
+            mDatePickerDialogFragment.show(supportFragmentManager, "DATE PICK")
+        }
 
         cancelButton = findViewById(R.id.cancel_button)
         cancelButton.setOnClickListener {
@@ -46,6 +50,7 @@ class NewDiaryEntry : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
         saveButton.setOnClickListener {
             val entry: Entry = Entry(dateText.text.toString(), entryTitle.text.toString(), entryContent.text.toString())
             dataAccess.insertDiaryEntry(entry)
+            setResult(RESULT_OK, intent)
             finish()
         }
     }

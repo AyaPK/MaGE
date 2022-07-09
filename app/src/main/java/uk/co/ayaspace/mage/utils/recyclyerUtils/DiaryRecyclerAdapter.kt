@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.RecyclerView
 import uk.co.ayaspace.mage.R
 import uk.co.ayaspace.mage.model.Entry
 
-internal class DiaryRecyclerAdapter(private val onItemClicked: (position: Int) -> Unit, private var itemsList: List<Entry>) : RecyclerView.Adapter<DiaryRecyclerViewHolder>() {
+class DiaryRecyclerAdapter(private val onItemClicked: (position: Int) -> Unit, private var itemsList: List<Entry>) : RecyclerView.Adapter<DiaryRecyclerViewHolder>() {
+    lateinit var content: Entry
+
     @NonNull
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DiaryRecyclerViewHolder {
         val itemView = LayoutInflater.from(parent.context)
@@ -23,4 +25,5 @@ internal class DiaryRecyclerAdapter(private val onItemClicked: (position: Int) -
     override fun getItemCount(): Int {
         return itemsList.size
     }
+
 }
