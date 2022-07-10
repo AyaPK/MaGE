@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="uk.co.ayaspace.mage">
 
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/mage_icon_128"
@@ -9,6 +12,9 @@
         android:roundIcon="@drawable/mage_icon_128"
         android:supportsRtl="true"
         android:theme="@style/Theme.MaGE">
+        <activity
+            android:name=".mainTabbedActivities.alarms.NewAlarm"
+            android:exported="false" />
         <activity
             android:name=".mainTabbedActivities.diary.EditDiaryEntry"
             android:exported="false" />
@@ -45,6 +51,15 @@
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name" />
+
+        <receiver android:name=".utils.AlarmBroadcastReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="uk.co.ayaspace.alarm"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </receiver>
 
         <meta-data
             android:name="preloaded_fonts"

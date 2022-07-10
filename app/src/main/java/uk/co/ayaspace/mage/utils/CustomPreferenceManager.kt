@@ -1,5 +1,6 @@
 package uk.co.ayaspace.mage.utils
 
+
 interface CustomPreferenceManager {
     fun setUserName(name: String)
     fun getUserName(): String

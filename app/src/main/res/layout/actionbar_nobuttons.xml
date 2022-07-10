@@ -26,14 +26,15 @@
             app:srcCompat="@drawable/mage_icon_64"
             android:contentDescription="@string/image_of_a_magicians_hat" />
 
-        <ImageView
-            android:id="@+id/mage_logo_text"
+        <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="21dp"
-            android:layout_marginTop="37dp"
-            app:srcCompat="@drawable/mage_logo_text"
-            android:contentDescription="@string/text_saying_mage" />
+            android:layout_marginTop="20dp"
+            android:text="MaGE"
+            android:textColor="@color/raisin_black"
+            android:textSize="40sp" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

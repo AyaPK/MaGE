@@ -197,5 +197,8 @@
     <string name="entry_text">Entry text</string>
     <string name="floating_button_to_create_new_entry">Floating Button To Create New Entry</string>
     <string name="editing_entry"><u>Editing entry</u></string>
+    <string name="new_medication_alarm"><u>New Medication Alarm</u></string>
+    <string name="repeat_daily">Repeat Daily</string>
+    <string name="alarm_name">Alarm Name</string>
 
 </resources>

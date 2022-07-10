@@ -6,6 +6,7 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import com.google.gson.Gson
+import uk.co.ayaspace.mage.model.Alarm
 import uk.co.ayaspace.mage.model.Entry
 import java.lang.Exception
 
@@ -20,6 +21,14 @@ class DataAccess(private val context: Context) {
         val entryObject = gson.toJson(entry)
         contentValues.put(helper.objectString, entryObject)
         return dbb.insert("Entries", null, contentValues)
+    }
+
+    public fun insertNewAlarm(alarm: Alarm): Long {
+        val dbb: SQLiteDatabase = helper.writableDatabase
+        val contentValues: ContentValues = ContentValues()
+        val entryObject = gson.toJson(alarm)
+        contentValues.put(helper.objectString, entryObject)
+        return dbb.insert("Alarms", null, contentValues)
     }
 
     public fun getAllDiaryEntries() : ArrayList<Entry> {
@@ -62,20 +71,6 @@ class DataAccess(private val context: Context) {
         dbb.update("Entries", updatedEntry,"id=$id", null)
     }
 
-//    public fun updateEntry(id: Int, name: String, childcomments: String, adultcomment: String, rating: Int, pagesread: Int, datetext: String) {
-//        val dbb = helper.writableDatabase
-//        val updatedEntry = ContentValues()
-//        updatedEntry.put("name", name)
-//        updatedEntry.put("childcomments", childcomments)
-//        updatedEntry.put("adultcomments", adultcomment)
-//        updatedEntry.put("rating", rating)
-//        updatedEntry.put("pagesread", pagesread)
-//        updatedEntry.put("datetext", datetext)
-
-//        dbb.update("choices", updatedEntry, "_id=$id", null)
-//         }
-
-
     class MyDbHelper(
         var context: Context,
         private val DATABASE_VERSION: Int = 1,
@@ -91,10 +86,8 @@ class DataAccess(private val context: Context) {
                 "objectString VARCHAR(255)" +
                 ");",
 
-        private val CREATE_SETTINGS_TABLE: String = "CREATE TABLE Settings (id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "CloudStorage VARCHAR(255), " +
-                "TimeFormat VARCHAR(255), " +
-                "DateFormat VARCHAR(255)" +
+        private val CREATE_ALARMS_TABLE: String = "CREATE TABLE Alarms (id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "objectString VARCHAR(255)" +
                 ");",
 
         private val DROP_USER_TABLE: String = "DROP TABLE IF EXISTS UserData",
@@ -105,7 +98,7 @@ class DataAccess(private val context: Context) {
         override fun onCreate(db: SQLiteDatabase?) {
             try {
                 db?.execSQL(CREATE_ENTRIES_TABLE)
-//                db?.execSQL(CREATE_SETTINGS_TABLE)
+                db?.execSQL(CREATE_ALARMS_TABLE)
             } catch (e: Exception) {
                 println("$e")
             }
