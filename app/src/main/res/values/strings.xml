@@ -117,5 +117,6 @@
     <string name="notification_text">Notification Text</string>
     <string name="notification_name">Notification Name</string>
     <string name="schedule_new_notification"><u>Schedule New Notification</u></string>
+    <string name="save">Save</string>
 
 </resources>

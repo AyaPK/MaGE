@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".mainTabbedActivities.home.HomeFragment">
 
+    <include
+        android:id="@+id/themainbar"
+        layout="@layout/actionbar_nobuttons"
+        />
+
     <TextView
         android:id="@+id/text_settings"
         android:layout_width="match_parent"
@@ -19,4 +24,177 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/settings_name_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="27dp"
+        android:text="Your name"
+        android:textColor="@color/raisin_black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/themainbar" />
+
+    <TextView
+        android:id="@+id/settings_pronouns_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:text="Pronouns"
+        android:textColor="@color/raisin_black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settings_name_label" />
+
+    <TextView
+        android:id="@+id/settings_birthday_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:text="Your birthday"
+        android:textColor="@color/raisin_black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settings_pronouns_label" />
+
+    <TextView
+        android:id="@+id/settings_time_format_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:text="Time Format"
+        android:textColor="@color/raisin_black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settings_birthday_label" />
+
+    <TextView
+        android:id="@+id/settings_date_format_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:text="Date Format"
+        android:textColor="@color/raisin_black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settings_time_format_label" />
+
+    <TextView
+        android:id="@+id/settings_cloud_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:text="Cloud Backups"
+        android:textColor="@color/raisin_black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settings_date_format_label" />
+
+    <EditText
+        android:id="@+id/settings_name_entry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintStart_toEndOf="@+id/settings_name_label"
+        app:layout_constraintTop_toBottomOf="@+id/themainbar" />
+
+
+    <Spinner
+        android:id="@+id/settings_pronouns_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="79dp"
+        android:layout_marginTop="35dp"
+        app:layout_constraintStart_toEndOf="@+id/settings_pronouns_label"
+        app:layout_constraintTop_toBottomOf="@+id/settings_name_entry" />
+
+    <Spinner
+        android:id="@+id/settings_pronouns_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toEndOf="@id/settings_pronouns_1"
+        app:layout_constraintTop_toBottomOf="@+id/settings_name_entry" />
+
+    <TextView
+        android:id="@+id/slash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="26dp"
+        android:text="/"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/settings_pronouns_1"
+        app:layout_constraintTop_toBottomOf="@+id/settings_name_entry" />
+
+    <TextView
+        android:id="@+id/settings_birthday_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="63dp"
+        android:layout_marginTop="42dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/settings_birthday_label"
+        app:layout_constraintTop_toBottomOf="@+id/settings_pronouns_1" />
+
+    <ImageButton
+        android:id="@+id/settings_birthday_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="33dp"
+        android:src="@android:drawable/ic_menu_my_calendar"
+        app:layout_constraintStart_toEndOf="@+id/settings_birthday_text"
+        app:layout_constraintTop_toBottomOf="@+id/settings_pronouns_2" />
+
+    <Spinner
+        android:id="@+id/settings_time_format"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="69dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toEndOf="@+id/settings_time_format_label"
+        app:layout_constraintTop_toBottomOf="@+id/settings_birthday_text" />
+
+    <Spinner
+        android:id="@+id/settings_date_format"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="74dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintStart_toEndOf="@+id/settings_date_format_label"
+        app:layout_constraintTop_toBottomOf="@+id/settings_time_format" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/settings_toggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toEndOf="@+id/settings_cloud_label"
+        app:layout_constraintTop_toBottomOf="@+id/settings_date_format" />
+
+    <Button
+        android:id="@+id/settings_save_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:layout_marginEnd="150dp"
+        android:text="@string/save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settings_toggle" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

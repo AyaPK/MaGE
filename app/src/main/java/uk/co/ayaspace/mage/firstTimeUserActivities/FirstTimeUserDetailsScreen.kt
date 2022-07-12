@@ -74,7 +74,7 @@ class FirstTimeUserDetailsScreen : AppCompatActivity(), OnDateSetListener {
         mCalendar.set(Calendar.MONTH, p2)
         mCalendar.set(Calendar.DAY_OF_MONTH, p3)
 
-        val simpleDateFormat = SimpleDateFormat("dd LLL")
+        val simpleDateFormat = SimpleDateFormat("dd-MM-yyyy")
         val dateTime = simpleDateFormat.format(mCalendar.time).toString()
         birthdayDateText.text = dateTime
     }

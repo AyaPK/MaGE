@@ -8,9 +8,7 @@
 
     <include
         android:id="@+id/themainbar"
-        layout="@layout/actionbar_nobuttons"
-        tools:layout_editor_absoluteX="160dp"
-        tools:layout_editor_absoluteY="185dp" />
+        layout="@layout/actionbar_nobuttons" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/mainEntryList"
