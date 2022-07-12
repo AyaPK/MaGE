@@ -6,8 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
-import androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_STRONG
-import androidx.biometric.BiometricManager.Authenticators.DEVICE_CREDENTIAL
+import androidx.biometric.BiometricManager.Authenticators.*
 import androidx.core.content.ContextCompat
 import uk.co.ayaspace.mage.MainActivity
 import uk.co.ayaspace.mage.R
@@ -53,9 +52,9 @@ class SecurityCheckOnLaunch : AppCompatActivity() {
             })
 
         promptInfo = BiometricPrompt.PromptInfo.Builder()
-            .setTitle("Please log in")
-            .setSubtitle("You can use your pin or fingerprints - If neither of these are set up on your device then please do so to use MaGE")
-            .setAllowedAuthenticators(BIOMETRIC_STRONG or DEVICE_CREDENTIAL)
+            .setTitle("Please authenticate to use MaGE")
+            .setSubtitle("MaGE takes your security seriously. Authentication via Biometrics or a device PIN is required to continue!\n")
+            .setAllowedAuthenticators(BIOMETRIC_WEAK or DEVICE_CREDENTIAL)
             .build()
 
         biometricPrompt.authenticate(promptInfo)

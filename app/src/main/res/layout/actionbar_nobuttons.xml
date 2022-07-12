@@ -32,6 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="21dp"
             android:layout_marginTop="20dp"
+            android:padding="-5dp"
             android:text="MaGE"
             android:textColor="@color/raisin_black"
             android:textSize="40sp" />

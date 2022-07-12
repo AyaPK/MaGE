@@ -31,6 +31,7 @@ class DataAccess(private val context: Context) {
         return dbb.insert("Alarms", null, contentValues)
     }
 
+
     public fun getAllDiaryEntries() : ArrayList<Entry> {
         val dbb = helper.writableDatabase
         val columns = arrayOf(helper.id, helper.objectString)
@@ -44,9 +45,27 @@ class DataAccess(private val context: Context) {
         return buffer
     }
 
+    public fun getAllAlarms(): ArrayList<Alarm> {
+        val dbb = helper.writableDatabase
+        val columns = arrayOf(helper.id, helper.objectString)
+        val cursor: Cursor = dbb.query("Alarms",columns,null,null,null,null,null)
+        val buffer: ArrayList<Alarm> = ArrayList<Alarm>()
+        while (cursor.moveToNext()) {
+            val alarm : Alarm = gson.fromJson(cursor.getString(cursor.getColumnIndexOrThrow(helper.objectString)), Alarm::class.java)
+            alarm.alarmID = cursor.getString(cursor.getColumnIndexOrThrow(helper.id)).toInt()
+            buffer.add(alarm)
+        }
+        return buffer
+    }
+
     public fun deleteEntry(id: Int) {
         val dbb = helper.writableDatabase
         dbb.delete("Entries", "id=$id", null)
+    }
+
+    public fun deleteAlarm(id: Int) {
+        val dbb = helper.writableDatabase
+        dbb.delete("Alarms", "id=$id", null)
     }
 
     public fun getEntryByID(id: Int): Entry {
@@ -69,6 +88,15 @@ class DataAccess(private val context: Context) {
         updatedEntry.put(helper.id, id)
         updatedEntry.put(helper.objectString, gson.toJson(entry))
         dbb.update("Entries", updatedEntry,"id=$id", null)
+    }
+
+    public fun updateAlarm(alarm: Alarm) {
+        val dbb = helper.writableDatabase
+        val updatedEntry = ContentValues()
+        val id = alarm.alarmID.toInt()
+        updatedEntry.put(helper.id, id)
+        updatedEntry.put(helper.objectString, gson.toJson(alarm))
+        dbb.update("Alarms", updatedEntry,"id=$id", null)
     }
 
     class MyDbHelper(

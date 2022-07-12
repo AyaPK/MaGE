@@ -1,5 +1,6 @@
 package uk.co.ayaspace.mage.mainTabbedActivities.alarms
 
+import android.app.Activity
 import uk.co.ayaspace.mage.utils.recyclyerUtils.AlarmsRecyclerAdapter
 import android.content.Context
 import android.content.Intent
@@ -7,9 +8,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Adapter
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,8 +21,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.w3c.dom.Text
 import uk.co.ayaspace.mage.R
 import uk.co.ayaspace.mage.databinding.FragmentAlarmsBinding
+import uk.co.ayaspace.mage.model.Alarm
 import uk.co.ayaspace.mage.utils.CustomPreferenceManager
+import uk.co.ayaspace.mage.utils.DataAccess
 import uk.co.ayaspace.mage.utils.PreferenceHelper
+import uk.co.ayaspace.mage.utils.recyclyerUtils.DiaryRecyclerAdapter
 import java.util.*
 
 class AlarmsFragment : Fragment() {
@@ -32,6 +38,10 @@ class AlarmsFragment : Fragment() {
     lateinit var blackoutOverlay: RelativeLayout
     lateinit var newNotificationText: TextView
     lateinit var newAlarmText: TextView
+    lateinit var dataAccess: DataAccess
+    lateinit var alarmList: ArrayList<Alarm>
+    lateinit var alarmAdapter: AlarmsRecyclerAdapter
+    lateinit var appContext: Context
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -42,8 +52,9 @@ class AlarmsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val appContext: Context = this.requireActivity().applicationContext
+        appContext = this.requireActivity().applicationContext
         val preferenceHelper: CustomPreferenceManager by lazy { PreferenceHelper(appContext) }
+        dataAccess = DataAccess(requireContext())
 
         _binding = FragmentAlarmsBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -55,20 +66,13 @@ class AlarmsFragment : Fragment() {
         newAlarmText = binding.newAlarmText
         newNotificationText = binding.newNoficationText
 
-        val x: ArrayList<String> = ArrayList<String>()
-        x.add("aaaa")
-        x.add("aaaa")
-        x.add("aaaa")
-        x.add("aaaa")
-        x.add("aaaa")
-        x.add("aaaa")
-        x.add("aaaa")
-        x.add("aaaa")
+        alarmList = dataAccess.getAllAlarms()
 
         alarmListView = binding.mainEntryList
         val layoutManager = LinearLayoutManager(appContext)
         alarmListView.layoutManager = layoutManager
-        alarmListView.adapter = AlarmsRecyclerAdapter({ position -> onItemClicked(position) }, x)
+        alarmAdapter = AlarmsRecyclerAdapter({ position -> onItemClicked(position) }, alarmList)
+        alarmListView.adapter = alarmAdapter
 
         addButton.setOnClickListener {
             showSubIcons()
@@ -77,7 +81,13 @@ class AlarmsFragment : Fragment() {
         alarmAddButton.setOnClickListener {
             val intent: Intent = Intent(appContext, NewAlarm::class.java)
             hideSubIcons()
-            startActivity(intent)
+            getResultFromAlarmClicked.launch(intent)
+        }
+
+        notificationAddButton.setOnClickListener {
+            val intent: Intent = Intent(appContext, NewNotification::class.java)
+            hideSubIcons()
+            getResultFromAlarmClicked.launch(intent)
         }
 
         return root
@@ -89,7 +99,18 @@ class AlarmsFragment : Fragment() {
     }
 
     private fun onItemClicked(position: Int) {
-        //pass
+        val alarm : Alarm = alarmList[position]
+        if(!alarm.isNotification) {
+            val intent: Intent = Intent(appContext, EditAlarm::class.java)
+            intent.putExtra("label", alarm.label)
+            intent.putExtra("hour", alarm.hourOrDay)
+            intent.putExtra("min", alarm.minuteOrMonth)
+            intent.putExtra("daily", alarm.daily)
+            intent.putExtra("id", alarm.alarmID)
+            getResultFromAlarmClicked.launch(intent)
+        } else {
+            //pass
+        }
     }
 
     private fun showSubIcons() {
@@ -114,5 +135,14 @@ class AlarmsFragment : Fragment() {
         newAlarmText.visibility = View.GONE
 
         addButton.setOnClickListener { showSubIcons() }
+    }
+
+    private var getResultFromAlarmClicked = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            alarmList = dataAccess.getAllAlarms()
+            alarmAdapter = AlarmsRecyclerAdapter({ position -> onItemClicked(position) }, alarmList)
+            alarmAdapter.notifyDataSetChanged()
+            alarmListView.adapter = alarmAdapter
+        }
     }
 }

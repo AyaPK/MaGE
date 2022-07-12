@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".mainTabbedActivities.alarms.NewNotification">
+
+    <include
+        android:id="@+id/themainbar"
+        layout="@layout/actionbar_nobuttons"
+        />
+
+    <TextView
+        android:id="@+id/new_entry_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/schedule_new_notification"
+        android:textAlignment="center"
+        android:textColor="@color/raisin_black"
+        android:textSize="30sp"
+        app:layout_constraintTop_toBottomOf="@+id/themainbar"
+        tools:layout_editor_absoluteX="0dp" />
+
+
+    <DatePicker
+        android:id="@+id/notification_date_picker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="24dp"
+        android:calendarViewShown="false"
+        android:datePickerMode="spinner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/new_entry_text" />
+
+    <TextView
+        android:id="@+id/new_notification_title_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/notification_name"
+        android:textAlignment="center"
+        android:textColor="@color/raisin_black"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/notification_date_picker"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <EditText
+        android:id="@+id/notification_name_entry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="91dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text=""
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/new_notification_title_label" />
+
+    <TextView
+        android:id="@+id/new_notification_text_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/notification_text"
+        android:textAlignment="center"
+        android:textColor="@color/raisin_black"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/notification_name_entry"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <EditText
+        android:id="@+id/notification_text_entry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="91dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text=""
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/new_notification_text_label" />
+
+
+    <Button
+        android:id="@+id/new_notification_save_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="65dp"
+        android:text="Save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/notification_text_entry" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
