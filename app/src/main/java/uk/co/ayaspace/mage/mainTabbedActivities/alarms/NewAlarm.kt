@@ -38,6 +38,6 @@ class NewAlarm : AppCompatActivity() {
         val alarmData : AlarmData = AlarmData(this)
         val alarm : Alarm = Alarm(alarmLabel.text.toString(), hour, min, true, false, 0)
         val alarmID = dataAccess.insertNewAlarm(alarm)
-        alarmData.setAlarm(hour, min, "${alarm.label} has been activated!!")
+        alarmData.setAlarm(hour, min, alarm.label)
     }
 }

@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MaGE">
         <activity
-            android:name=".utils.recyclyerUtils.AlarmLaunchedActivity"
+            android:name=".mainTabbedActivities.alarms.AlarmLaunchedActivity"
             android:exported="false" />
         <activity
             android:name=".mainTabbedActivities.alarms.EditNotification"

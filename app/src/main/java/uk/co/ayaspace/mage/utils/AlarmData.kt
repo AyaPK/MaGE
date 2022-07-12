@@ -35,10 +35,10 @@ class AlarmData() {
 
         val intent: Intent = Intent(context, AlarmBroadcastReceiver::class.java)
         intent.putExtra("payload", message)
+        intent.putExtra("min", min)
+        intent.putExtra("hour", hour)
         intent.action = "uk.co.ayaspace.alarm"
         val pendingIntent: PendingIntent = PendingIntent.getBroadcast(context, 42, intent, PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
-
-        val x = c.time
 
         val alarmManager = context!!.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         alarmManager.set(AlarmManager.RTC_WAKEUP, c.timeInMillis, pendingIntent)

@@ -5,12 +5,58 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/raisin_black"
-    tools:context=".utils.recyclyerUtils.AlarmLaunchedActivity">
+    tools:context=".mainTabbedActivities.alarms.AlarmLaunchedActivity">
 
     <include
         android:id="@+id/themainbar"
         layout="@layout/actionbar_nobuttons"
         />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="316dp"
+        android:layout_height="298dp"
+        android:layout_marginStart="47dp"
+        android:layout_marginTop="136dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/themainbar"
+        app:srcCompat="@drawable/thin_circle" />
+
+    <TextView
+        android:id="@+id/alarm_screen_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="76dp"
+        android:layout_marginBottom="100dp"
+        android:text="00:00"
+        android:textColor="@color/Orange_Yellow_Crayola"
+        android:textSize="60sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintStart_toStartOf="@+id/imageView3" />
+
+    <TextView
+        android:id="@+id/alarm_screen_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="49dp"
+        android:text="ALARM TEXT"
+        android:textAlignment="center"
+        android:textColor="@color/Orange_Yellow_Crayola"
+        android:textSize="34sp"
+        app:layout_constraintTop_toBottomOf="@+id/themainbar"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <Button
+        android:id="@+id/alarmStopButton"
+        android:layout_width="183dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="112dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="#A51C1C"
+        android:text="Stop Alarm"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
