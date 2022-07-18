@@ -35,7 +35,7 @@ class NewNotification : AppCompatActivity() {
             dataAccess.insertNewAlarm(notification)
             setResult(RESULT_OK, intent)
             val alarmData : AlarmData = AlarmData(this)
-            alarmData.schedulePushNotifications(notification.hourOrDay, notification.minuteOrMonth)
+            alarmData.schedulePushNotifications(notification.hourOrDay, notification.minuteOrMonth, notificationTitle.text.toString(), notificationText.text.toString())
             finish()
         }
     }

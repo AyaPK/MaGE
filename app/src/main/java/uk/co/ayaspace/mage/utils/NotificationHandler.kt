@@ -23,7 +23,7 @@ import androidx.core.content.ContextCompat.getSystemService
 class NotificationHandler() {
     val NOTIFIYTAG = "new request"
 
-    fun notify(context: Context, message: String, number: Int) {
+    fun notify(context: Context, message: String, content: String, number: Int) {
         val intent = Intent(context, MainActivity::class.java)
 
         val notificationManager =
@@ -54,7 +54,7 @@ class NotificationHandler() {
             .setTicker("Hearty365")
 //            .setPriority(Notification.PRIORITY_MAX)
             .setContentTitle(message)
-            .setContentText("")
+            .setContentText(content)
             .setContentInfo("Info")
 
         notificationManager.notify( /*notification id*/1, notificationBuilder.build())

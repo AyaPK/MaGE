@@ -45,20 +45,19 @@ class AlarmData() {
     }
 
 
-    fun schedulePushNotifications(day: Int, month: Int) {
+    fun schedulePushNotifications(day: Int, month: Int, title: String, content: String) {
         val HOUR_TO_SHOW_PUSH = 10
         val alarmManager = context!!.getSystemService(ALARM_SERVICE) as AlarmManager
-        val alarmPendingIntent by lazy {
-            val intent = Intent(context, BroadcastReceiver::class.java)
-            intent.action = "uk.co.ayaspace.notify"
-            PendingIntent.getBroadcast(context, 0, intent, 0)
-        }
+        val intent: Intent = Intent(context, AlarmBroadcastReceiver::class.java)
+        intent.putExtra("title", title)
+        intent.putExtra("content", content)
+        intent.action = "uk.co.ayaspace.notify"
+        val pendingIntent: PendingIntent = PendingIntent.getBroadcast(context, 42, intent, PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
 
         val calendar = GregorianCalendar.getInstance().apply {
             if (get(Calendar.HOUR_OF_DAY) >= HOUR_TO_SHOW_PUSH) {
                 add(Calendar.DAY_OF_MONTH, 1)
             }
-
             set(Calendar.HOUR_OF_DAY, HOUR_TO_SHOW_PUSH)
             set(Calendar.MINUTE, 0)
             set(Calendar.SECOND, 0)
@@ -67,11 +66,10 @@ class AlarmData() {
             set(Calendar.MONTH, month)
         }
 
-        alarmManager.setRepeating(
+        alarmManager.set(
             AlarmManager.RTC_WAKEUP,
             calendar.timeInMillis,
-            AlarmManager.INTERVAL_DAY,
-            alarmPendingIntent
+            pendingIntent
         )
     }
 }

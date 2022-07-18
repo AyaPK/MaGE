@@ -35,7 +35,7 @@ class AlarmBroadcastReceiver: BroadcastReceiver() {
         else if (p1.action.equals("uk.co.ayaspace.notify")) {
             val extras = p1.extras
             val notify = NotificationHandler()
-            notify.notify(p0!!, extras?.getString("payload")!!, 10)
+            notify.notify(p0!!, extras?.getString("title")!!, extras.getString("content")!!, 10)
         }
         else if (p1.action.equals("android.intent.action.BOOT_COMPLETED")) {
             val alarmList: ArrayList<Alarm> = dataAccess.getAllAlarms()
