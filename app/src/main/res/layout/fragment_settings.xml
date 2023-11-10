@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".mainTabbedActivities.home.HomeFragment">
 
     <include
         android:id="@+id/themainbar"
-        layout="@layout/actionbar_nobuttons"
-        />
+        layout="@layout/actionbar_nobuttons" />
 
     <TextView
         android:id="@+id/text_settings"
@@ -19,6 +19,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:textAlignment="center"
+        android:textColor="@android:color/secondary_text_light"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,7 +33,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="27dp"
         android:text="Your name"
-        android:textColor="@color/raisin_black"
+        android:textColor="@android:color/secondary_text_light"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/themainbar" />
@@ -44,7 +45,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
         android:text="Pronouns"
-        android:textColor="@color/raisin_black"
+        android:textColor="@android:color/secondary_text_light"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/settings_name_label" />
@@ -56,7 +57,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
         android:text="Your birthday"
-        android:textColor="@color/raisin_black"
+        android:textColor="@android:color/secondary_text_light"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/settings_pronouns_label" />
@@ -68,7 +69,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
         android:text="Time Format"
-        android:textColor="@color/raisin_black"
+        android:textColor="@android:color/secondary_text_light"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/settings_birthday_label" />
@@ -80,7 +81,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
         android:text="Date Format"
-        android:textColor="@color/raisin_black"
+        android:textColor="@android:color/secondary_text_light"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/settings_time_format_label" />
@@ -92,7 +93,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
         android:text="Cloud Backups"
-        android:textColor="@color/raisin_black"
+        android:textColor="@android:color/secondary_text_light"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/settings_date_format_label" />

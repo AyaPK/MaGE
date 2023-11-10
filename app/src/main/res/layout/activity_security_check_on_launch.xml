@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/raisin_black"
     tools:context=".activities.SecurityCheckOnLaunch">
 
     <include
@@ -30,7 +31,7 @@
         android:layout_marginTop="67dp"
         android:text="Please authenticate to\nlog in to MaGE! 🪄"
         android:textAlignment="center"
-        android:textColor="@color/raisin_black"
+        android:textColor="@color/white"
         android:textSize="34sp"
         app:layout_constraintTop_toBottomOf="@+id/themainbar"
         tools:layout_editor_absoluteX="75dp" />
