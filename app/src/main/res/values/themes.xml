@@ -4,7 +4,7 @@
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/Ultramarine</item>
         <item name="colorPrimaryVariant">@color/Ultramarine</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnPrimary">@color/raisin_black</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/Cornflower_Blue</item>
         <item name="colorSecondaryVariant">@color/Cornflower_Blue</item>

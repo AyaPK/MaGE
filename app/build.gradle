@@ -1,10 +1,14 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id("com.google.android.libraries.mapsplatform.secrets-gradle-plugin")
 }
 
 android {
     compileSdk 32
+
+
+
 
     defaultConfig {
         applicationId "uk.co.ayaspace.mage"
@@ -12,6 +16,9 @@ android {
         targetSdk 32
         versionCode 1
         versionName "1.0"
+
+        buildConfigField "String", "AWS_DB_USER", "\"$AWS_DB_USER\""
+        buildConfigField "String", "AWS_DB_PASS", "\"$AWS_DB_PASS\""
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -51,5 +58,8 @@ dependencies {
     implementation 'androidx.preference:preference-ktx:1.2.0'
     implementation 'com.google.code.gson:gson:2.9.0'
     implementation 'androidx.biometric:biometric:1.2.0-alpha04'
+
+    //MYSQL AWS
+    implementation 'mysql:mysql-connector-java:5.1.49'
 
 }
