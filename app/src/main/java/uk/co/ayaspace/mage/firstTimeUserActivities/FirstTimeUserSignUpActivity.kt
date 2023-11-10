@@ -41,9 +41,9 @@ class FirstTimeUserSignUpActivity : AppCompatActivity() {
 
         signUpButton.setOnClickListener {
             var password = passwordEntry.text.toString()
-            var passwordConfirmation = passwordConfirm.text.toString()
-            var email = emailEntry.text.toString()
-            var username = usernameEntry.text.toString()
+            val passwordConfirmation = passwordConfirm.text.toString()
+            val email = emailEntry.text.toString()
+            val username = usernameEntry.text.toString()
             if (password.equals(passwordConfirmation) && password.isNotBlank()) {
                 password = StringHasher().generateHash(password)
 

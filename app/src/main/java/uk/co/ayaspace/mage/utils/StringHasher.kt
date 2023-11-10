@@ -21,7 +21,7 @@ class StringHasher() {
         return toHex(hash)
     }
 
-    fun toHex(bytes: ByteArray): String {
+    private fun toHex(bytes: ByteArray): String {
         val hexArray = "0123456789ABCDEF".toCharArray()
 
         val hexChars = CharArray(bytes.size * 2)
