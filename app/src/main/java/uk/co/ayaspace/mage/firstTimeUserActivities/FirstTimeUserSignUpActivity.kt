@@ -7,27 +7,14 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import uk.co.ayaspace.mage.R
 import uk.co.ayaspace.mage.utils.AwsDataAccess
-import uk.co.ayaspace.mage.utils.CustomPreferenceManager
-import uk.co.ayaspace.mage.utils.PreferenceHelper
 import uk.co.ayaspace.mage.utils.StringHasher
-import java.nio.charset.StandardCharsets.UTF_8
-import java.security.MessageDigest
 
 class FirstTimeUserSignUpActivity : AppCompatActivity() {
-    private val preferenceHelper: CustomPreferenceManager by lazy {
-        PreferenceHelper(
-            applicationContext
-        )
-    }
-
     lateinit var usernameEntry: EditText
     lateinit var signUpButton: Button
     lateinit var emailEntry: EditText
     lateinit var passwordEntry: EditText
     lateinit var passwordConfirm: EditText
-
-    fun md5(str: String): ByteArray =
-        MessageDigest.getInstance("MD5").digest(str.toByteArray(UTF_8))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +34,7 @@ class FirstTimeUserSignUpActivity : AppCompatActivity() {
             if (password.equals(passwordConfirmation) && password.isNotBlank()) {
                 password = StringHasher().generateHash(password)
 
-                var dbaccess = AwsDataAccess(this)
+                val dbaccess = AwsDataAccess(this)
                 dbaccess.insertNewUser(
                     email,
                     username,
