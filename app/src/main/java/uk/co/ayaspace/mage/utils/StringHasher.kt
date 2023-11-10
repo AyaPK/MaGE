@@ -9,7 +9,7 @@ import javax.crypto.spec.PBEKeySpec
 class StringHasher() {
 
     private val ALGORITHM = "PBKDF2WithHmacSHA512"
-    private val ITERATIONS = 120_000
+    private val ITERATIONS = 120000
     private val KEY_LENGTH = 256
     private val HASH_SALT = BuildConfig.HASH_SALT
     fun generateHash(password: String): String {

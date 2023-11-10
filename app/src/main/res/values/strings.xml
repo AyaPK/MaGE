@@ -24,7 +24,7 @@
     <string name="time_format">Time Format</string>
     <string name="what_is_backed_up"><u>What information is backed up in the cloud?</u></string>
     <string name="date_format">Date Format</string>
-    <string name="cloud_backups_optional">Cloud backups are entirely optional\nand will be disabled by default.\nEnable cloud backups?</string>
+    <string name="cloud_backups_optional">Cloud backups are entirely optional\nand will be disabled by default.\nEnable cloud backups?\n\nSelecting this option will require\nsigning up for an account</string>
     <string name="next">Next</string>
 
     <string-array name="pronouns1">
