@@ -66,6 +66,10 @@ class SettingsFragment : Fragment() {
             preferenceHelper.setBirthday(birthdayText.text.toString())
             preferenceHelper.setPronouns2(selectedPronoun2)
             preferenceHelper.setPronouns1(selectedPronoun1)
+
+            Toast.makeText(appContext,
+                "Saved", Toast.LENGTH_SHORT)
+                .show()
         }
 
         return root
