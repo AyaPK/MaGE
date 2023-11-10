@@ -19,6 +19,7 @@ android {
 
         buildConfigField "String", "AWS_DB_USER", "\"$AWS_DB_USER\""
         buildConfigField "String", "AWS_DB_PASS", "\"$AWS_DB_PASS\""
+        buildConfigField "String", "HASH_SALT", "\"$HASH_SALT\""
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -61,5 +62,4 @@ dependencies {
 
     //MYSQL AWS
     implementation 'mysql:mysql-connector-java:5.1.49'
-
 }

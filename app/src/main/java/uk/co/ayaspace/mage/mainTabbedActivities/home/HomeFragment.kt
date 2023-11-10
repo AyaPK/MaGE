@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import uk.co.ayaspace.mage.databinding.FragmentHomeBinding
+import uk.co.ayaspace.mage.utils.AwsDataAccess
 import uk.co.ayaspace.mage.utils.CustomPreferenceManager
 import uk.co.ayaspace.mage.utils.PreferenceHelper
 import java.util.*
@@ -33,6 +34,7 @@ class HomeFragment : Fragment() {
 
         val textView: TextView = binding.textHome
         textView.text = "Hi, ${preferenceHelper.getUserName()}!"
+
         return root
     }
 
